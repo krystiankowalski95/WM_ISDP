@@ -1,6 +1,5 @@
 package tests;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -11,7 +10,13 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.AssertJUnit.*;
+import org.testng.annotations.Test;
+
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
+
+
 
 public class LocationTest {
     @Test
