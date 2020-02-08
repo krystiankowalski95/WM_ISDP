@@ -1,13 +1,13 @@
 package tests;
 
-import java.util.regex.Pattern;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 public class LocationTest {
     private WebDriver driver;
@@ -19,7 +19,12 @@ public class LocationTest {
     }
     @BeforeTest
     public void beforeTest() {
-        driver = null;
+        FirefoxBinary firefoxBinary = new FirefoxBinary();
+        firefoxBinary.addCommandLineOptions("--headless");
+        System.setProperty("webdriver.gecko.driver", "/opt/geckodriver");
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary(firefoxBinary);
+        FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         driver = new FirefoxDriver();
     }
     @AfterTest
