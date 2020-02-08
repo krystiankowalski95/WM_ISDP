@@ -107,7 +107,7 @@
                 <version>2.20</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>tests.xml</suiteXmlFile>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
                         <!-- <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile> -->
                     </suiteXmlFiles>
                 </configuration>
