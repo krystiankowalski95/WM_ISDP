@@ -65,6 +65,7 @@ public class LocationTest {
             driver.findElement(By.linkText("Wylogowanie")).click();
             driver.findElement(By.name("j_idt27:j_idt31")).click();
         } finally {
+            System.out.println("\nQUIT\n");
             driver.quit();
         }
     }
