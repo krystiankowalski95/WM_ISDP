@@ -19,6 +19,7 @@ public class LocationTest {
     }
     @BeforeTest
     public void beforeTest() {
+        driver = null;
         driver = new FirefoxDriver();
     }
     @AfterTest
