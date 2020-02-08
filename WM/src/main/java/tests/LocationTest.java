@@ -9,7 +9,26 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class LocationTest {
-    private WebDriver driver;
+    public WebDriver driver;
+
+    @Test
+    public void openMyBlog() {
+        driver.get("https://www.softwaretestingmaterial.com/");
+    }
+
+    @BeforeClass
+    public void beforeClass() {
+
+        System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\Drivers\\geckodriver.exe");
+        driver = new FirefoxDriver();
+
+    }
+
+    @AfterClass
+    public void afterClass() {
+        driver.quit();
+    }
+    /*private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -95,5 +114,5 @@ public class LocationTest {
         } finally {
             acceptNextAlert = true;
         }
-    }
+    }*/
 }
