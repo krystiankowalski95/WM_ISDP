@@ -10,6 +10,8 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.AssertJUnit.*;
+
 public class LocationTest {
     @Test
     public static void main(String [] args) {
@@ -20,20 +22,77 @@ public class LocationTest {
         firefoxOptions.setBinary(firefoxBinary);
         FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         try {
-            driver.get("http://www.google.com");
-            driver.manage().timeouts().implicitlyWait(4,
-                    TimeUnit.SECONDS);
-            WebElement queryBox = driver.findElement(By.name("q"));
-            queryBox.sendKeys("headless firefox");
-            WebElement searchBtn = driver.findElement(By.name("btnK"));
-            searchBtn.click();
-            WebElement iresDiv = driver.findElement(By.id("ires"));
-            iresDiv.findElements(By.tagName("a")).get(0).click();
-            System.out.println(driver.getPageSource());
+            driver.get("http://localhost:8080/faces/main/index.xhtml");
+            driver.findElement(By.linkText("Logowanie")).click();
+            driver.findElement(By.name("j_username")).click();
+            driver.findElement(By.name("j_username")).click();
+            driver.findElement(By.name("j_username")).click();
+            driver.findElement(By.name("j_username")).clear();
+            driver.findElement(By.name("j_username")).sendKeys("JDoe");
+            driver.findElement(By.name("j_password")).click();
+            driver.findElement(By.name("j_password")).clear();
+            driver.findElement(By.name("j_password")).sendKeys("P@ssw0rd");
+            driver.findElement(By.name("j_username")).click();
+            driver.findElement(By.xpath("//input[@value='Zaloguj']")).click();
+            driver.findElement(By.xpath("//h4")).click();
+            try {
+                assertEquals("Uwierzytelniony użytkownik: JDoe", driver.findElement(By.xpath("//h4")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            driver.findElement(By.linkText("Lokalizacja")).click();
+            driver.findElement(By.linkText("Utwórz nową lokalizację")).click();
+            driver.findElement(By.id("CreateLocationForm:locationSymbol")).click();
+            driver.findElement(By.id("CreateLocationForm:locationSymbol")).clear();
+            driver.findElement(By.id("CreateLocationForm:locationSymbol")).sendKeys("TT-00-00-00");
+            driver.findElement(By.id("CreateLocationForm:locationType")).click();
+            new Select(driver.findElement(By.id("CreateLocationForm:locationType"))).selectByVisibleText("CAŁA");
+            driver.findElement(By.xpath("//option[@value='SHELF1']")).click();
+            driver.findElement(By.name("CreateLocationForm:j_idt35")).click();
+            driver.findElement(By.linkText("Lokalizacja")).click();
+            driver.findElement(By.linkText("Lista lokalizacji")).click();
+            try {
+                assertEquals("TT-00-00-00", driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[11]/td")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            try {
+                assertEquals("CAŁA", driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[11]/td[2]")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            driver.findElement(By.name("j_idt27:j_idt28:10:onlyWarehouse:j_idt38")).click();
+            driver.findElement(By.id("EditLocationForm:locationType")).click();
+            new Select(driver.findElement(By.id("EditLocationForm:locationType"))).selectByVisibleText("POŁOWA");
+            driver.findElement(By.xpath("//option[@value='SHELF2']")).click();
+            driver.findElement(By.name("EditLocationForm:j_idt32")).click();
+            try {
+                assertEquals("POŁOWA", driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[11]/td[2]")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            try {
+                assertEquals("TT-00-00-00", driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[11]/td")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            driver.findElement(By.name("j_idt27:j_idt28:10:onlyWarehouse:j_idt39")).click();
+            driver.findElement(By.name("DeleteLocationForm:j_idt31")).click();
+            try {
+                assertEquals("AA-01-04-04", driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[10]/td")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            try {
+                assertEquals("JEDNA CZWARTA", driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[10]/td[2]")).getText());
+            } catch (Error e) {
+                System.out.println(e.toString());
+            }
+            driver.findElement(By.linkText("Wylogowanie")).click();
+            driver.findElement(By.name("j_idt27:j_idt31")).click();
 
 
         } finally {
-            System.out.println("\nQUIT\n");
             driver.quit();
         }
     }
