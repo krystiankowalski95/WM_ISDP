@@ -23,7 +23,7 @@ public class LocationTest {
         FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         try {
             driver.get("http://localhost:8080/faces/main/index.xhtml");
-            driver.findElement(By.linkText("Logowanie")).click();
+            driver.findElement(By.linkText("Sign in")).click();
             driver.findElement(By.name("j_username")).click();
             driver.findElement(By.name("j_username")).click();
             driver.findElement(By.name("j_username")).click();
