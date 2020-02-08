@@ -19,7 +19,7 @@ public class LocationTest {
     @BeforeClass
     public void beforeClass() {
 
-        System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\Drivers\\geckodriver.exe");
+       // System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\Drivers\\geckodriver.exe");
         driver = new FirefoxDriver();
 
     }
