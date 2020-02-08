@@ -52,6 +52,7 @@ public class LocationTest {
             driver.findElement(By.linkText("Lista lokalizacji")).click();
 
             String value = driver.findElement(By.xpath("/html/body/div.container-fluid/div.row/div.col-md-12.content/form#j_idt27/table.table/tbody/tr/td")).getAttribute("disabled");
+            System.out.println("\nNo SIEMA!\n");
             System.out.println(value);
 
             driver.findElement(By.name("j_idt27:j_idt28:10:onlyWarehouse:j_idt38")).click();
