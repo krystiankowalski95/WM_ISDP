@@ -6,10 +6,12 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class LocationTest {
+    @Test
     public static void main(String [] args) {
         FirefoxBinary firefoxBinary = new FirefoxBinary();
         firefoxBinary.addCommandLineOptions("--headless");
