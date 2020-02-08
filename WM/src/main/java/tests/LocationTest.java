@@ -18,16 +18,16 @@ public class LocationTest {
         firefoxOptions.setBinary(firefoxBinary);
         FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         try {
-            driver.get("http://www.google.com");
-            driver.manage().timeouts().implicitlyWait(4,
-                    TimeUnit.SECONDS);
-            WebElement queryBox = driver.findElement(By.name("q"));
-            queryBox.sendKeys("headless firefox");
-            WebElement searchBtn = driver.findElement(By.name("btnK"));
-            searchBtn.click();
-            WebElement iresDiv = driver.findElement(By.id("ires"));
-            iresDiv.findElements(By.tagName("a")).get(0).click();
-            System.out.println(driver.getPageSource());
+//            driver.get("http://www.google.com");
+//            driver.manage().timeouts().implicitlyWait(4,
+//                    TimeUnit.SECONDS);
+//            WebElement queryBox = driver.findElement(By.name("q"));
+//            queryBox.sendKeys("headless firefox");
+//            WebElement searchBtn = driver.findElement(By.name("btnK"));
+//            searchBtn.click();
+//            WebElement iresDiv = driver.findElement(By.id("ires"));
+//            iresDiv.findElements(By.tagName("a")).get(0).click();
+//            System.out.println(driver.getPageSource());
 
             driver.get("http://localhost:8080/faces/main/index.xhtml");
             driver.findElement(By.linkText("Logowanie")).click();
@@ -50,6 +50,10 @@ public class LocationTest {
             driver.findElement(By.name("CreateLocationForm:j_idt35")).click();
             driver.findElement(By.linkText("Lokalizacja")).click();
             driver.findElement(By.linkText("Lista lokalizacji")).click();
+
+            String value = driver.findElement(By.xpath("/html/body/div.container-fluid/div.row/div.col-md-12.content/form#j_idt27/table.table/tbody/tr/td")).getAttribute("disabled");
+            System.out.println(value);
+
             driver.findElement(By.name("j_idt27:j_idt28:10:onlyWarehouse:j_idt38")).click();
             driver.findElement(By.id("EditLocationForm:locationType")).click();
             new Select(driver.findElement(By.id("EditLocationForm:locationType"))).selectByVisibleText("POŁOWA");
