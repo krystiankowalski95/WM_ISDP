@@ -16,7 +16,7 @@ public class LocationTest {
     @Test
     public void LocationCase() {
         FirefoxBinary firefoxBinary = new FirefoxBinary();
-        firefoxBinary.addCommandLineOptions("--headless");
+       // firefoxBinary.addCommandLineOptions("--headless");
         System.setProperty("webdriver.gecko.driver", "/var/lib/jenkins/workspace/test/WM/geckodriver/geckodriver");
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setBinary(firefoxBinary);
