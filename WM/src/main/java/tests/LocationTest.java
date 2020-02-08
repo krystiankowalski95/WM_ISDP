@@ -9,23 +9,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class LocationTest {
-    public WebDriver driver;
-
+    private WebDriver driver;
     @Test
-    public void openMyBlog() {
-        driver.get("https://www.softwaretestingmaterial.com/");
+    public void testEasy() {
+        driver.get("http://demo.guru99.com/test/guru99home/");
+        String title = driver.getTitle();
+        Assert.assertTrue(title.contains("Demo Guru99 Page"));
     }
-
-    @BeforeClass
-    public void beforeClass() {
-
-       // System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\Drivers\\geckodriver.exe");
+    @BeforeTest
+    public void beforeTest() {
         driver = new FirefoxDriver();
-
     }
-
-    @AfterClass
-    public void afterClass() {
+    @AfterTest
+    public void afterTest() {
         driver.quit();
     }
     /*private WebDriver driver;
