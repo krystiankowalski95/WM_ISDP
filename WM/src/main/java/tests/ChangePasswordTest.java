@@ -74,6 +74,18 @@ public class ChangePasswordTest {
             driver.findElement(By.name("j_password")).clear();
             driver.findElement(By.name("j_password")).sendKeys("NewP@ssw0rd");
             driver.findElement(By.xpath("//input[@value='Sign in']")).click();
+            driver.findElement(By.linkText("Settings")).click();
+            driver.findElement(By.linkText("Change password")).click();
+            driver.findElement(By.id("ChangeMyPasswordForm:oldPassword")).click();
+            driver.findElement(By.id("ChangeMyPasswordForm:oldPassword")).clear();
+            driver.findElement(By.id("ChangeMyPasswordForm:oldPassword")).sendKeys("NewP@ssw0rd");
+            driver.findElement(By.id("ChangeMyPasswordForm:newPassword")).click();
+            driver.findElement(By.id("ChangeMyPasswordForm:newPassword")).clear();
+            driver.findElement(By.id("ChangeMyPasswordForm:newPassword")).sendKeys("P@ssw0rd");
+            driver.findElement(By.id("ChangeMyPasswordForm:newPasswordRepeat")).click();
+            driver.findElement(By.id("ChangeMyPasswordForm:newPasswordRepeat")).clear();
+            driver.findElement(By.id("ChangeMyPasswordForm:newPasswordRepeat")).sendKeys("P@ssw0rd");
+            driver.findElement(By.name("ChangeMyPasswordForm:j_idt33")).click();
             driver.findElement(By.linkText("Sign out")).click();
             driver.findElement(By.name("j_idt27:j_idt31")).click();
         } finally {
