@@ -39,7 +39,7 @@ public class LocationTest {
 //            } catch (Error e) {
 //                verificationErrors.append(e.toString());
 //            }
-            driver.findElement(By.linkText("Lokalizacja")).click();
+            driver.findElement(By.linkText("Location")).click();
             driver.findElement(By.linkText("Locations list")).click();
             try {
                 assertEquals(driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[10]/td")).getText(), "AA-01-04-04");
