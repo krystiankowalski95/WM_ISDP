@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNull;
@@ -16,14 +19,19 @@ import static org.testng.FileAssert.fail;
 public class LocationTest {
     private StringBuffer verificationErrors = new StringBuffer();
     private FirefoxDriver driver;
-    @Test
-    public void LocationCase() {
+
+    @BeforeClass(alwaysRun = true)
+    public void setUp() throws Exception {
         FirefoxBinary firefoxBinary = new FirefoxBinary();
         firefoxBinary.addCommandLineOptions("--headless");
         System.setProperty("webdriver.gecko.driver", "/var/lib/jenkins/workspace/test/WM/geckodriver/geckodriver");
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setBinary(firefoxBinary);
         driver = new FirefoxDriver(firefoxOptions);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    }
+    @Test
+    public void LocationCase() {
         try {
             driver.get("http://localhost:8080/faces/main/index.xhtml");
             driver.findElement(By.linkText("Sign in")).click();
@@ -34,11 +42,11 @@ public class LocationTest {
             driver.findElement(By.name("j_password")).clear();
             driver.findElement(By.name("j_password")).sendKeys("P@ssw0rd");
             driver.findElement(By.xpath("//input[@value='Sign in']")).click();
-//            try {
-//                assertEquals(driver.findElement(By.xpath("//h4")).getText(), "Authenticated user: JDoe");
-//            } catch (Error e) {
-//                verificationErrors.append(e.toString());
-//            }
+            try {
+                assertEquals(driver.findElement(By.xpath("//h4")).getText(), "Authenticated user: JDoe");
+            } catch (Error e) {
+                verificationErrors.append(e.toString());
+            }
             driver.findElement(By.linkText("Location")).click();
             driver.findElement(By.linkText("Locations list")).click();
             try {
