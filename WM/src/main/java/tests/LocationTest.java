@@ -11,7 +11,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNull;
 import static org.testng.FileAssert.fail;
 
 public class LocationTest {
@@ -91,7 +90,6 @@ public class LocationTest {
             driver.findElement(By.name("j_idt27:j_idt28:10:onlyWarehouse:j_idt39")).click();
             driver.findElement(By.name("DeleteLocationForm:j_idt31")).click();
             try {
-                assertNull(driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[11]/td")));
                 assertEquals(driver.findElement(By.xpath("//form[@id='j_idt27']/table/tbody/tr[10]/td")).getText(), "AA-01-04-04");
             } catch (Error e) {
                 verificationErrors.append(e.toString());
