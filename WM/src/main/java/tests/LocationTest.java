@@ -34,11 +34,11 @@ public class LocationTest {
             driver.findElement(By.name("j_password")).clear();
             driver.findElement(By.name("j_password")).sendKeys("P@ssw0rd");
             driver.findElement(By.xpath("//input[@value='Sign in']")).click();
-            try {
-                assertEquals(driver.findElement(By.xpath("//h4")).getText(), "Authenticated user: JDoe");
-            } catch (Error e) {
-                verificationErrors.append(e.toString());
-            }
+//            try {
+//                assertEquals(driver.findElement(By.xpath("//h4")).getText(), "Authenticated user: JDoe");
+//            } catch (Error e) {
+//                verificationErrors.append(e.toString());
+//            }
             driver.findElement(By.linkText("Location")).click();
             driver.findElement(By.linkText("Locations list")).click();
             try {
